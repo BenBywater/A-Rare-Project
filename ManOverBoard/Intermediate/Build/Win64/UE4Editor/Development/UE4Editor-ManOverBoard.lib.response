@@ -16,6 +16,8 @@
 /NODEFAULTLIB:"LIBCD"
 /NODEFAULTLIB:"LIBCPD"
 "D:\Unreal Engine Projects\A Rare Project\ManOverBoard\Intermediate\Build\Win64\UE4Editor\Development\ManOverBoard\PCH.ManOverBoard.h.obj"
+"D:\Unreal Engine Projects\A Rare Project\ManOverBoard\Intermediate\Build\Win64\UE4Editor\Development\ManOverBoard\BoatController.cpp.obj"
+"D:\Unreal Engine Projects\A Rare Project\ManOverBoard\Intermediate\Build\Win64\UE4Editor\Development\ManOverBoard\BoatPlayer.cpp.obj"
 "D:\Unreal Engine Projects\A Rare Project\ManOverBoard\Intermediate\Build\Win64\UE4Editor\Development\ManOverBoard\ManOverBoard.cpp.obj"
 "D:\Unreal Engine Projects\A Rare Project\ManOverBoard\Intermediate\Build\Win64\UE4Editor\Development\ManOverBoard\ManOverBoardGameModeBase.cpp.obj"
 "D:\Unreal Engine Projects\A Rare Project\ManOverBoard\Intermediate\Build\Win64\UE4Editor\Development\ManOverBoard\ManOverBoard.generated.cpp.obj"

@@ -11,17 +11,96 @@
 PRAGMA_DISABLE_OPTIMIZATION
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCode1ManOverBoard() {}
+	void ABoatController::StaticRegisterNativesABoatController()
+	{
+	}
+	IMPLEMENT_CLASS(ABoatController, 2496443010);
+	void ABoatPlayer::StaticRegisterNativesABoatPlayer()
+	{
+	}
+	IMPLEMENT_CLASS(ABoatPlayer, 944980535);
 	void AManOverBoardGameModeBase::StaticRegisterNativesAManOverBoardGameModeBase()
 	{
 	}
 	IMPLEMENT_CLASS(AManOverBoardGameModeBase, 4197082574);
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
+	ENGINE_API class UClass* Z_Construct_UClass_APlayerController();
+	ENGINE_API class UClass* Z_Construct_UClass_APawn();
 	ENGINE_API class UClass* Z_Construct_UClass_AGameModeBase();
 
+	MANOVERBOARD_API class UClass* Z_Construct_UClass_ABoatController_NoRegister();
+	MANOVERBOARD_API class UClass* Z_Construct_UClass_ABoatController();
+	MANOVERBOARD_API class UClass* Z_Construct_UClass_ABoatPlayer_NoRegister();
+	MANOVERBOARD_API class UClass* Z_Construct_UClass_ABoatPlayer();
 	MANOVERBOARD_API class UClass* Z_Construct_UClass_AManOverBoardGameModeBase_NoRegister();
 	MANOVERBOARD_API class UClass* Z_Construct_UClass_AManOverBoardGameModeBase();
 	MANOVERBOARD_API class UPackage* Z_Construct_UPackage__Script_ManOverBoard();
+	UClass* Z_Construct_UClass_ABoatController_NoRegister()
+	{
+		return ABoatController::StaticClass();
+	}
+	UClass* Z_Construct_UClass_ABoatController()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_APlayerController();
+			Z_Construct_UPackage__Script_ManOverBoard();
+			OuterClass = ABoatController::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900284;
+
+
+				OuterClass->ClassConfigName = FName(TEXT("Game"));
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Collision Rendering Utilities|Transformation"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("BoatController.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("BoatController.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_ABoatController(Z_Construct_UClass_ABoatController, &ABoatController::StaticClass, TEXT("ABoatController"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(ABoatController);
+	UClass* Z_Construct_UClass_ABoatPlayer_NoRegister()
+	{
+		return ABoatPlayer::StaticClass();
+	}
+	UClass* Z_Construct_UClass_ABoatPlayer()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_APawn();
+			Z_Construct_UPackage__Script_ManOverBoard();
+			OuterClass = ABoatPlayer::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("BoatPlayer.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("BoatPlayer.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_ABoatPlayer(Z_Construct_UClass_ABoatPlayer, &ABoatPlayer::StaticClass, TEXT("ABoatPlayer"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(ABoatPlayer);
 	UClass* Z_Construct_UClass_AManOverBoardGameModeBase_NoRegister()
 	{
 		return AManOverBoardGameModeBase::StaticClass();
@@ -63,8 +142,8 @@ void EmptyLinkFunctionForGeneratedCode1ManOverBoard() {}
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/ManOverBoard")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x774288A2;
-			Guid.B = 0x0616BEE0;
+			Guid.A = 0x55F22738;
+			Guid.B = 0x96D17B76;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

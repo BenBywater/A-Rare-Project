@@ -1,46 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<ItemGroup>
-		<None Include="..\..\ManOverBoard.uproject" />
-		<Filter Include="Source">
-			<UniqueIdentifier>{D5CDD9D8-99DA-44EC-B499-719A0F2EBB3F}</UniqueIdentifier>
-		</Filter>
-		<None Include="..\..\Source\ManOverBoard.Target.cs">
-			<Filter>Source</Filter>
-		</None >
-		<None Include="..\..\Source\ManOverBoardEditor.Target.cs">
-			<Filter>Source</Filter>
-		</None >
-		<Filter Include="Config">
-			<UniqueIdentifier>{8AE3295E-5C37-49BD-9D74-868D3324B0D7}</UniqueIdentifier>
-		</Filter>
-		<None Include="..\..\Config\DefaultEditor.ini">
-			<Filter>Config</Filter>
-		</None >
-		<None Include="..\..\Config\DefaultEngine.ini">
-			<Filter>Config</Filter>
-		</None >
-		<None Include="..\..\Config\DefaultGame.ini">
-			<Filter>Config</Filter>
-		</None >
-		<Filter Include="Source\ManOverBoard">
-			<UniqueIdentifier>{896D6BE6-A2D1-4252-A4E4-0CBB5C6E496E}</UniqueIdentifier>
-		</Filter>
-		<None Include="..\..\Source\ManOverBoard\ManOverBoard.Build.cs">
-			<Filter>Source\ManOverBoard</Filter>
-		</None >
-		<ClCompile Include="..\..\Source\ManOverBoard\ManOverBoard.cpp">
-			<Filter>Source\ManOverBoard</Filter>
-		</ClCompile >
-		<ClInclude Include="..\..\Source\ManOverBoard\ManOverBoard.h">
-			<Filter>Source\ManOverBoard</Filter>
-		</ClInclude >
-		<ClCompile Include="..\..\Source\ManOverBoard\ManOverBoardGameModeBase.cpp">
-			<Filter>Source\ManOverBoard</Filter>
-		</ClCompile >
-		<ClInclude Include="..\..\Source\ManOverBoard\ManOverBoardGameModeBase.h">
-			<Filter>Source\ManOverBoard</Filter>
-		</ClInclude >
-	</ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\ManOverBoard.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{7CD665C3-3D39-4B8D-8826-C44B74CFA73A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ManOverBoard.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\ManOverBoardEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{54E5FA39-DF86-498F-B14F-2CF2087C947D}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\ManOverBoard">
+      <UniqueIdentifier>{E5B8B0DD-D479-4BBC-9313-8C779C4099FC}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ManOverBoard\BoatController.cpp">
+      <Filter>Source\ManOverBoard</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ManOverBoard\BoatController.h">
+      <Filter>Source\ManOverBoard</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\ManOverBoard\ManOverBoard.Build.cs">
+      <Filter>Source\ManOverBoard</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\ManOverBoard\ManOverBoard.cpp">
+      <Filter>Source\ManOverBoard</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ManOverBoard\ManOverBoard.h">
+      <Filter>Source\ManOverBoard</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ManOverBoard\ManOverBoardGameModeBase.cpp">
+      <Filter>Source\ManOverBoard</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ManOverBoard\ManOverBoardGameModeBase.h">
+      <Filter>Source\ManOverBoard</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\ManOverBoard\BoatPlayer.h">
+      <Filter>Source\ManOverBoard</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\ManOverBoard\BoatPlayer.cpp">
+      <Filter>Source\ManOverBoard</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

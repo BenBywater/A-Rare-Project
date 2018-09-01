@@ -6,6 +6,12 @@
 ===========================================================================*/
 
 #include "GeneratedCppIncludes.h"
+#ifndef MANOVERBOARD_BoatController_generated_h
+	#include "BoatController.h"
+#endif
+#ifndef MANOVERBOARD_BoatPlayer_generated_h
+	#include "BoatPlayer.h"
+#endif
 #ifndef MANOVERBOARD_ManOverBoardGameModeBase_generated_h
 	#include "ManOverBoardGameModeBase.h"
 #endif
