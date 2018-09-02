@@ -2,7 +2,7 @@
 	"TargetName" : "ManOverBoardEditor",
 	"Platform" : "Win64",
 	"Configuration" : "Development",
-	"BuildId" : "f0cc0a53-c18b-4a63-b34f-228fb088dd2a",
+	"BuildId" : "d78230b7-a12b-42c7-8329-8de374823584",
 	"Version" : 
 	{
 		"MajorVersion" : 4,
@@ -17,15 +17,15 @@
 	"BuildProducts" :
 	[
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-ManOverBoard-3356.dll",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-ManOverBoard-8231.dll",
 			"Type" : "DynamicLibrary"
 		},
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-ManOverBoard-3356.pdb",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-ManOverBoard-8231.pdb",
 			"Type" : "SymbolFile"
 		},
 		{
-			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-ManOverBoard-3356.lib",
+			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-ManOverBoard-8231.lib",
 			"Type" : "ImportLibrary"
 		},
 		{

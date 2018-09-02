@@ -39,9 +39,6 @@ void ABoatController::SetupInputComponent()
 
 	InputComponent->BindAxis("XAxisMovementBoat", this, &ABoatController::PassXValue);
 	InputComponent->BindAxis("YAxisMovementBoat", this, &ABoatController::PassYValue);
-
-	/*InputComponent->BindAxis("XAxisMovementBoat", boatPawn, &ABoatPlayer::SetXValue);
-	InputComponent->BindAxis("YAxisMovementBoat", boatPawn, &ABoatPlayer::SetYValue);*/
 	
 }
 

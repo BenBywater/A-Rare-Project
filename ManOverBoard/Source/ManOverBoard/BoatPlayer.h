@@ -24,11 +24,33 @@ public:
 
 	void SetYValue(float y);
 
+	float CalculateSineWaveValue(float x, float amplitude, float frequency);
+	void MoveBoat();
+	void RotateBoat(float dTime);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
 	UStaticMeshComponent* BoatMeshComponent;
+
+	UCameraComponent* Camera;
+
+	USpringArmComponent* CameraArm;
+
+	float twoPi; 
+
+	float currentX;
+	float currentY;
+
+	float waveAmp1;
+	float waveAmp2;
+	float waveAmp3;
+
+	float waveFreq1;
+	float waveFreq2;
+	float waveFreq3;
+
 	
 };
