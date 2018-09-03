@@ -13,12 +13,15 @@ ABoatPlayer::ABoatPlayer():
 	currentX(0.f),
 	currentY(0.f),
 	twoPi(6.28318530718),
-	waveAmp1(2.f),
-	waveAmp2(1.2),
-	waveAmp3(5.f),
-	waveFreq1(2.f),
-	waveFreq2(10.f),
-	waveFreq3(3.f)
+	waveAmp1(1),
+	waveAmp2(1),
+	waveAmp3(1),
+	waveFreq1(2),
+	waveFreq2(1),
+	waveFreq3(1.5),
+	bobCycle1(0.f),
+	bobCycle2(0.f),
+	bobCycle3(0.f)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -32,7 +35,7 @@ ABoatPlayer::ABoatPlayer():
 	BoatMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	BoatMeshComponent->SetStaticMesh(BoatMesh.Object);
 	BoatMeshComponent->SetRelativeScale3D(FVector(25.f, 30.f, 25.f));
-	BoatMeshComponent->SetSimulatePhysics(true);
+	BoatMeshComponent->SetSimulatePhysics(false);
 	BoatMeshComponent->SetEnableGravity(true);
 	BoatMeshComponent->SetLinearDamping(0.01);
 	
@@ -63,9 +66,9 @@ void ABoatPlayer::BeginPlay()
 void ABoatPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
+
 	RotateBoat(DeltaTime);
-	MoveBoat();
+	//MoveBoat();
 
 }
 
@@ -106,10 +109,49 @@ float ABoatPlayer::CalculateSineWaveValue(float x, float amplitude, float freque
 void ABoatPlayer::RotateBoat(float dTime)
 {
 	// convert dTime into x
+	float xWave1 = dTime * 360;
+	xWave1 /= waveFreq1;
+	bobCycle1 += xWave1;
+	//UE_LOG(LogTemp, Warning, TEXT("bobCycle1 Value after += xWave1: %s"), *FString::Printf(TEXT("%f"), bobCycle1));
+	bobCycle1 = fmod(bobCycle1, 360);
+	float degree1 = bobCycle1 * 0.01745329251;
+	float bobCycle1Sine = sin(degree1) * waveAmp1;
+	//
+	//
+	float xWave2 = dTime * 360;
+	xWave2 /= waveFreq2;
+	bobCycle2 += xWave2;
+	//UE_LOG(LogTemp, Warning, TEXT("bobCycle1 Value after += xWave1: %s"), *FString::Printf(TEXT("%f"), bobCycle1));
+	bobCycle2 = fmod(bobCycle2, 360);
+	float degree2 = bobCycle2 * 0.01745329251;
+	float bobCycle2Sine = sin(degree2) * waveAmp2;
+	//
+	//
+	float xWave3 = dTime * 360;
+	xWave3 /= waveFreq3;
+	bobCycle3 += xWave3;
+	//UE_LOG(LogTemp, Warning, TEXT("bobCycle1 Value after += xWave1: %s"), *FString::Printf(TEXT("%f"), bobCycle1));
+	bobCycle3 = fmod(bobCycle3, 360);
+	float degree3 = bobCycle3 * 0.01745329251;
+	float bobCycle3Sine = sin(degree3) * waveAmp3;
+	//
+
+	////call sine wave on all three wave setups
+
+	FVector loc = BoatMeshComponent->RelativeLocation;
+	FVector newLoc = loc;
+	float zPlane = bobCycle1Sine + bobCycle2Sine + bobCycle3Sine;
+	UE_LOG(LogTemp, Warning, TEXT("zPlane: %s"), *FString::Printf(TEXT("%f"), zPlane));
+	///*float zPlane = CalculateSineWaveValue(xWave1, waveAmp1, waveFreq1) +
+	//	CalculateSineWaveValue(xWave2, waveAmp2, waveFreq2) +
+	//	CalculateSineWaveValue(xWave3, waveAmp3, waveFreq3);*/
+	newLoc.Z += zPlane;
+	//
 	
-	//call sine wave on all three wave setups
 
 	//combine all wave vectors into one to create rotation
+	//FVector rotationVector(0, 0, zPlane);
+	BoatMeshComponent->SetRelativeLocation(newLoc);
 }
 
 void ABoatPlayer::MoveBoat()

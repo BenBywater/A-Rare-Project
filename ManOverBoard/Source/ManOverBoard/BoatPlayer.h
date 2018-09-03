@@ -52,5 +52,9 @@ private:
 	float waveFreq2;
 	float waveFreq3;
 
+	float bobCycle1;
+	float bobCycle2;
+	float bobCycle3;
+
 	
 };
