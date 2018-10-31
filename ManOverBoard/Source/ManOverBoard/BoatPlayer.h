@@ -24,8 +24,7 @@ public:
 
 	void SetYValue(float y);
 
-	float CalculateSineWaveValue(float x, float amplitude, float frequency);
-	void MoveBoat();
+	void MoveBoat(float dTime);
 	void RotateBoat(float dTime);
 
 protected:
@@ -38,8 +37,6 @@ private:
 	UCameraComponent* Camera;
 
 	USpringArmComponent* CameraArm;
-
-	float twoPi; 
 
 	float currentX;
 	float currentY;
@@ -55,6 +52,8 @@ private:
 	float bobCycle1;
 	float bobCycle2;
 	float bobCycle3;
+
+	float boatSpeed;
 
 	
 };
