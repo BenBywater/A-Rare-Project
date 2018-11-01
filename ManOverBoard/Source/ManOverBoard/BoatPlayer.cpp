@@ -8,6 +8,7 @@
 // Sets default values
 ABoatPlayer::ABoatPlayer():
 	BoatMeshComponent(nullptr),
+	WindowMeshComponent(nullptr),
 	Camera(nullptr),
 	CameraArm(nullptr),
 	currentX(0.f),
@@ -15,19 +16,25 @@ ABoatPlayer::ABoatPlayer():
 	waveAmp1(1),
 	waveAmp2(1),
 	waveAmp3(1),
-	waveFreq1(2),
+	waveFreq1(1.2),
 	waveFreq2(1),
 	waveFreq3(1.5),
 	bobCycle1(0.f),
 	bobCycle2(0.f),
 	bobCycle3(0.f),
-	boatSpeed(500)
+	boatSpeed(500),
+	forwardRoll(-3.f),
+	reverseRoll(6.f),
+	reversePitch(true),
+	reverseLock(true),
+	pDegree2(-10.f)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	this->AutoPossessPlayer = EAutoReceiveInput::Player0;
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> BoatMesh(TEXT("/Game/Boat/Boat"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> windowMesh(TEXT("/Game/StarterContent/Props/SM_GlassWindow"));
 
 	// Create the mesh component
 	BoatMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PirateBoat"));
@@ -38,6 +45,11 @@ ABoatPlayer::ABoatPlayer():
 	BoatMeshComponent->SetSimulatePhysics(false);
 	BoatMeshComponent->SetEnableGravity(true);
 	BoatMeshComponent->SetLinearDamping(0.01);
+
+	WindowMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Window"));
+	WindowMeshComponent->SetStaticMesh(windowMesh.Object);
+	FAttachmentTransformRules rules(EAttachmentRule::SnapToTarget, true);
+	WindowMeshComponent->AttachToComponent(BoatMeshComponent, rules, TEXT("Socket"));
 	
 
 	// Create a camera arm
@@ -68,8 +80,9 @@ void ABoatPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	RotateBoat(DeltaTime);
+	BobbingBoat(DeltaTime);
 	MoveBoat(DeltaTime);
+	RotateBoatRoll(DeltaTime);
 
 }
 
@@ -83,18 +96,18 @@ void ABoatPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 void ABoatPlayer::SetXValue(float x)
 {
-	UE_LOG(LogTemp, Warning, TEXT("X Value: %s"), *FString::Printf(TEXT("%f"), x))
+	//UE_LOG(LogTemp, Warning, TEXT("X Value: %s"), *FString::Printf(TEXT("%f"), x))
 	currentX = x;
 }
 
 void ABoatPlayer::SetYValue(float y)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Y Value: %s"), *FString::Printf(TEXT("%f"), y))
+	//UE_LOG(LogTemp, Warning, TEXT("Y Value: %s"), *FString::Printf(TEXT("%f"), y))
 	currentY = y;
 }
 
 
-void ABoatPlayer::RotateBoat(float dTime)
+void ABoatPlayer::BobbingBoat(float dTime)
 {
 	// convert dTime into x
 	float xWave1 = dTime * 360;
@@ -125,6 +138,94 @@ void ABoatPlayer::RotateBoat(float dTime)
 
 	newLoc.Z += zPlane;
 	BoatMeshComponent->SetRelativeLocation(newLoc);
+}
+
+void ABoatPlayer::RotateBoatRoll(float dTime)
+{
+	float degree1 = 100;
+	if (reverseLock != false)
+	{
+		float pitch = dTime * 360;
+		pitch /= 2.f;
+		forwardRoll += pitch;
+		forwardRoll = fmod(forwardRoll, 360);
+		degree1 = forwardRoll * 0.01745329251;
+		
+
+		if (pDegree2 > degree1)
+		{
+			pitchList.Pop();
+			reverseLock = false;
+		}
+		else
+		{
+			FRotator NewRotation = BoatMeshComponent->RelativeRotation;
+			NewRotation.Pitch = degree1;
+
+			SetActorRelativeRotation(NewRotation);
+			pitchList.Push(degree1);
+			pDegree2 = degree1;
+		}
+		
+	}
+	else
+	{
+
+		FRotator NewRotation = BoatMeshComponent->RelativeRotation;
+		NewRotation.Pitch = pitchList.Last();
+		SetActorRelativeRotation(NewRotation);
+		pitchList.Pop();
+		if (pitchList.Num() == 0)
+		{
+			reverseLock = true;
+			pDegree2 = -10.f;
+		}
+	}
+	
+	//NewRotation.Roll = degree1;
+	//if (reverseLock)
+	//{
+	//	reversePitch = !reversePitch;
+	//	reverseLock = false;
+	//	
+	//}
+
+	//if (reversePitch)
+	//{
+	//	float roll = dTime * 360;
+	//	roll /= 2.f;
+	//	forwardRoll += roll;
+	//	forwardRoll = fmod(forwardRoll, 360);
+	//	degree2 = forwardRoll * 0.01745329251;
+	//	//FVector newRotation = BoatMeshComponent->RelativeRotation.Vector().RotateAngleAxis(degree1, FVector(1, 0, 0));
+	//	NewRotation.Pitch = degree2;
+	//	SetActorRelativeRotation(NewRotation);
+	//	if (degree2 > 6)
+	//	{
+	//		reverseRoll = 6;
+	//		reverseLock = true;
+	//	}
+	//	UE_LOG(LogTemp, Warning, TEXT("forward Value: %s"), *FString::Printf(TEXT("%f"), degree2));
+	//}
+	//else
+	//{
+	//	float roll = dTime * 360;
+	//	roll /= 2.f;
+	//	reverseRoll -= roll;
+	//	reverseRoll = fmod(reverseRoll, 360);
+	//	degree2 = reverseRoll * 0.01745329251;
+	//	//FVector newRotation = BoatMeshComponent->RelativeRotation.Vector().RotateAngleAxis(degree1, FVector(1, 0, 0));
+	//	NewRotation.Pitch = degree2;
+	//	SetActorRelativeRotation(NewRotation);
+	//	if (degree2 < 1)
+	//	{
+	//		forwardRoll = 0;
+	//		reverseLock = true;
+	//	}
+	//	UE_LOG(LogTemp, Warning, TEXT("reverse Value: %s"), *FString::Printf(TEXT("%f"), degree2));
+	//}
+	
+	
 }
 
 void ABoatPlayer::MoveBoat(float dTime)

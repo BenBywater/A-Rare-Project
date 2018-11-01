@@ -18,7 +18,7 @@ void ABoatController::BeginPlay()
 	Super::BeginPlay();
 
 	// Spawn Boat
-	FVector location = FVector(70.f, -9450.f, 475.f);
+	FVector location = FVector(70.f, -9450.f, 540.f);
 	FRotator rotate = FRotator(0.f, 0.f, 0.f);
 	FActorSpawnParameters SpawnInfo;
 	boatPawn = GetWorld()->SpawnActor<ABoatPlayer>(ABoatPlayer::StaticClass(), location, rotate, SpawnInfo);

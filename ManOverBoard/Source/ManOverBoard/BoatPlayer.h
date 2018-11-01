@@ -5,6 +5,7 @@
 #include "GameFramework/Pawn.h"
 #include "BoatPlayer.generated.h"
 
+
 UCLASS()
 class MANOVERBOARD_API ABoatPlayer : public APawn
 {
@@ -25,14 +26,15 @@ public:
 	void SetYValue(float y);
 
 	void MoveBoat(float dTime);
-	void RotateBoat(float dTime);
-
+	void BobbingBoat(float dTime);
+	void RotateBoatRoll(float dTime);
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
 	UStaticMeshComponent* BoatMeshComponent;
+	UStaticMeshComponent* WindowMeshComponent;
 
 	UCameraComponent* Camera;
 
@@ -52,6 +54,13 @@ private:
 	float bobCycle1;
 	float bobCycle2;
 	float bobCycle3;
+
+	float reverseRoll;
+	float forwardRoll;
+	bool reversePitch;
+	bool reverseLock;
+	float pDegree2;
+	TArray<float> pitchList;
 
 	float boatSpeed;
 

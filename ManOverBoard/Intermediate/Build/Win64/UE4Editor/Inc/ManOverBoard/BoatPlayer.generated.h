@@ -11,9 +11,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define MANOVERBOARD_BoatPlayer_generated_h
 
-#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_RPC_WRAPPERS
-#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_RPC_WRAPPERS_NO_PURE_DECLS
-#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_INCLASS_NO_PURE_DECLS \
+#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_RPC_WRAPPERS
+#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_RPC_WRAPPERS_NO_PURE_DECLS
+#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesABoatPlayer(); \
 	friend MANOVERBOARD_API class UClass* Z_Construct_UClass_ABoatPlayer(); \
@@ -24,7 +24,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_INCLASS \
+#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_INCLASS \
 	private: \
 	static void StaticRegisterNativesABoatPlayer(); \
 	friend MANOVERBOARD_API class UClass* Z_Construct_UClass_ABoatPlayer(); \
@@ -35,7 +35,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_STANDARD_CONSTRUCTORS \
+#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ABoatPlayer(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ABoatPlayer) \
@@ -48,7 +48,7 @@ private: \
 public:
 
 
-#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_ENHANCED_CONSTRUCTORS \
+#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API ABoatPlayer(ABoatPlayer&&); \
@@ -59,26 +59,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ABoatPlayer); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ABoatPlayer)
 
 
-#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_PRIVATE_PROPERTY_OFFSET
-#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_8_PROLOG
-#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_GENERATED_BODY_LEGACY \
+#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_PRIVATE_PROPERTY_OFFSET
+#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_9_PROLOG
+#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_PRIVATE_PROPERTY_OFFSET \
-	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_RPC_WRAPPERS \
-	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_INCLASS \
-	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_STANDARD_CONSTRUCTORS \
+	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_PRIVATE_PROPERTY_OFFSET \
+	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_RPC_WRAPPERS \
+	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_INCLASS \
+	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_GENERATED_BODY \
+#define ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_PRIVATE_PROPERTY_OFFSET \
-	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_RPC_WRAPPERS_NO_PURE_DECLS \
-	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_INCLASS_NO_PURE_DECLS \
-	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_11_ENHANCED_CONSTRUCTORS \
+	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_PRIVATE_PROPERTY_OFFSET \
+	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_INCLASS_NO_PURE_DECLS \
+	ManOverBoard_Source_ManOverBoard_BoatPlayer_h_12_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
